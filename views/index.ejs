@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel='stylesheet' href='/stylesheets/style.css'/>
+</head>
+<body>
+<!--form nhap-->
+<form method="post" action="/add" enctype="application/x-www-form-urlencoded multipart/form-data">
+  <input name="picture" placeholder="Insert link image:">
+  <button type="submit" value="upload">Save</button>
+</form>
+
+<% for(var i = 0 ; i < data.length ; i++){ %>
+  <hr>
+  <div>
+    <img class="bd-placeholder-img card-img-top" src=<%= data[i].picture %> style="object-fit:
+         cover;
+         width="50%" height="500">
+  </div>
+  <!--Dinh nghia button xoa theo ID-->
+  <form style="display: inline; padding: 5px" method="get" action="/deleteIMG">
+    <input name="id" value="<%= data[i]._id %>" hidden>
+    <button type="submit" class="btn btn-sm btn-outline-secondary">Delete</button>
+  </form>
+  <!--Dinh nghia button sua theo ID-->
+  <a href="/update/?id=<%= data[i]._id %>">Update</a>
+<% } %>
+
+</body>
+</html>
